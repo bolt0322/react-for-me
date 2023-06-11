@@ -1,0 +1,132 @@
+.mbti {
+    width: 100%;
+    padding-bottom: 15px;
+    font-size: 32px;
+    text-align: center;
+    font-family: var(--font-Chassam);
+}
+.page {
+    
+    width: 500px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+.title {
+    font-size: 23px;
+    font-weight: 800;
+    color: #f9a5a5;
+    text-align: center;
+    margin: 5px 0px 8px 0px;
+    font-family: var(--font-SCDream);
+}
+.middle {
+    font-size: 15px;
+    font-weight: 800;
+    color: #f9a5a5;
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: var(--font-SCDream);
+}
+
+.image {
+   
+    width: 220px;
+    height: 280px;
+    margin: 20px auto 20px auto;
+}
+.btn {
+    color:white;
+    width: 270px;
+    height: 40px;
+    font-size: 13px;
+    background-color: #ee9090;
+    border-radius: 12px;
+    text-align: center;
+    line-height: 40px;
+    margin: 10px 10px 10px 10px;
+    font-family: var(--font-Suite);
+
+}
+.content {
+    border: 7px solid #ee9090;
+    border-radius: 30px 30px 30px 30px;
+    border-style: dotted;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px 10px 10px;
+}
+.ex01 {
+    font-size: 17px;
+    font-weight: bolder;
+    margin: 25px 10px 10px 10px;
+    text-align: center;
+}
+.button {
+    display: flex;
+    justify-content : center;
+}
+.resultTitle {
+    font-family: "Dosis", sans-serif;
+    font-size: 35px;
+    font-weight: bold;
+    color: #fd8e8e;
+    text-align: center;
+    text-shadow: 3px 3px 2px #f0cba8;
+    margin: 7px 0px 10px 0px;
+}
+.resultContent {
+    border: 7px solid #ee9090;
+    border-radius: 30px 30px 30px 30px;
+    border-style: dotted;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px 10px 10px;
+    box-sizing: border-box;
+}
+.ques {
+    font-family: var(--font-Suite);
+}
+
+@font-face {
+    font-family: "googleDosis";
+    font-weight: 400;
+    src: url('./font/Dosis-Regular.ttf');
+}
+@font-face {
+    font-family: "Chassam";
+    font-weight: 400;
+    src: url('./font/KCC-Chassam.ttf');
+}
+@font-face {
+    font-family: "SCDream";
+    font-weight: 400;
+    src: url('./font/SCDream2.otf');
+}
+@font-face {
+    font-family: "Suite";
+    src: url('./font/SUITE-Regular.ttf');
+}
+:root {
+    --font-googleDosis: "googleDosis";
+    --font-Chassam: "Chassam";
+    --font-SCDream: "SCDream";
+    --font-Suite: "Suite";
+}
+.NextBtn {
+    height: 50px;
+    display: flex;
+    text-align: center;
+    padding: 10px 0;
+    justify-content: center;
+    color: #fff;
+    font-family: "Dosis";
+    align-items: center;
+    font-size: 15px;
+    border:none;
+    border-radius: 5px;
+    background-color: #ee9090;
+}
