@@ -4,20 +4,8 @@ import qdata from "../src/question.json";
 import rdata from "../src/resultType.json";
 import { collection, addDoc,getDocs } from "firebase/firestore";
 import { db } from "./firebase";
-import { async } from "@firebase/util"; //eslint-disable-line no-unused-vars
-//만약에 count가 12가 되면 page 를 result 바꿔준다
-// setpage()  =   page = 13   / page= 'start'    => page ='question'
-//setcount()
-//setcount( count +1 )
-//count = count +1
-//i=2
-//if(i==1){
-//   이건 1이야
-//} else{
-//   일이 아닙니다.. 
-//}
-// 만약에 page가 start 라면 console.log('start') 아니고 만약 page가 question이라면 console.log('question') 아니라면 console.log('result')
-
+import mbti from "./public/image/mbti.jpg";
+import img from "./public/image/img02.jpg"
 
 function App() {
     const [page, setPage] = useState('start');
@@ -126,7 +114,7 @@ function App() {
                 <div className={banana.content}>
                     <div className={banana.title}>피크닉 버전으로 go!</div>
                     <div className={banana.middle}>나의 MBTI는..?</div>
-                    <img className={banana.image} src="./img/mbti.jpg" alt=""/>
+                    <img className={banana.image} src={mbti} alt=""/>
                     <div className={banana.btn} onClick={()=>{setPage('question')}}>시작하기</div>
                 </div>
             </div>
@@ -139,7 +127,8 @@ function App() {
                     <div className={banana.title}>Picnic Version</div>
                     <div>{count+1}/12</div>
                 </div>
-                <img className={banana.image} src={qdata[count].img} alt=""/> 
+                <img className={banana.image} src={img} alt=""/> 
+                {console.log(qdata[count].img)}
                 <div className={banana.ques}>{qdata[count].question}</div>
                 <div className={banana.btn} onClick={()=>{add_count(); handleClick(qdata[count].answer1.result); console.log(data)}}>{qdata[count].answer1.text}</div>
                 <div className={banana.btn} onClick={()=>{add_count(); handleClick(qdata[count].answer2.result); console.log(data)}}>{qdata[count].answer2.text}</div>

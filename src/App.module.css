@@ -60,7 +60,7 @@
     border:none;
     border-radius: 12px;
     background-color: #ee9090;
-    cursor: pointer;
+   cursor: pointer;
 }
 input[type=text] {
     font-size: 15px;

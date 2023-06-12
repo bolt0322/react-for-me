@@ -2,7 +2,7 @@
     {
         "id": 1,
         "question": "친구가 주말에 꽃구경을 하러 가자고 한다.",
-        "img": "./img/img01.jpg",
+        "img": "require('../src/public/image/img01.jpg')",
         "answer1": {
             "text": "사람들이 많이 가는 곳으로 가야지!",
             "result": "E"
@@ -15,7 +15,7 @@
     {
         "id": 2,
         "question": "꽃구경을 하러 왔는데 사람이 너무 많다.",
-        "img": "./img/img02.jpg",
+        "img": "require('../src/public/image/img02.jpg')",
         "answer1": {
             "text": "다들 날씨가 좋아서 꽃구경 하러 왔나보네ㅎㅎ",
             "result": "E"
@@ -28,7 +28,7 @@
     {
         "id": 3,
         "question": "약속이 끝나고 집에 왔다.",
-        "img": "./img/img03.jpg",
+        "img": "require('../src/public/image/img03.jpg')",
         "answer1": {
             "text": "오늘 너무 재밌었어! 내일은 뭐하지?",
             "result": "E"
@@ -41,7 +41,7 @@
     {
         "id": 4,
         "question": "봄은 어떤 계절이냐고 물어본다면",
-        "img": "./img/img04.jpg",
+        "img": "require('../src/public/image/img04.jpg')",
         "answer1": {
             "text": "봄은 3월-5월이고 꽃이 많이 피는 계절이야.",
             "result": "S"
@@ -54,7 +54,7 @@
     {
         "id": 5,
         "question": "꽃구경을 하는데 날씨가 너무 덥다.",
-        "img": "./img/img05.jpg",
+        "img": "require('../src/public/image/img05.jpg')",
         "answer1": {
             "text": "아 더워..물이나 마시고 싶다.",
             "result": "S"
@@ -67,7 +67,7 @@
     {
         "id": 6,
         "question": "꽃구경 중 어느 한곳에 사람들이 몰려있다.",
-        "img": "./img/img06.jpg",
+        "img": "require('../src/public/image/img06.jpg')",
         "answer1": {
             "text": "뭐지? 싶지만 내가 가려던 길을 간다.",
             "result": "S"
@@ -80,7 +80,7 @@
     {
         "id": 7,
         "question": "친구가 오늘 꽃구경 어땠냐고 물어본다.",
-        "img": "./img/img07.jpg",
+        "img": "require('../src/public/image/img07.jpg')",
         "answer1": {
             "text": "꽃은 활짝 폈는데 사람이 너무 많더라",
             "result": "T"
@@ -93,7 +93,7 @@
     {
         "id": 8,
         "question": "친구가 떨어지는 벚꽃잎을 보고 아쉽다고 한다면?",
-        "img": "./img/img08.jpg",
+        "img": "require('../src/public/image/img08.jpg')",
         "answer1": {
             "text": "내년에 또 보면되지!",
             "result": "T"
@@ -106,7 +106,7 @@
     {
         "id": 9,
         "question": "카페에서 대화중에 친구가 고민이 있다고 한다면?",
-        "img": "./img/img09.jpg",
+        "img": "require('../src/public/image/img09.jpg')",
         "answer1": {
             "text": "고민을 듣고 해결해주려고 한다.",
             "result": "T"
@@ -119,7 +119,7 @@
     {   
         "id": 10,
         "question": "친구가 꽃 구경을 하러 가자고 한다.",
-        "img": "./img/img10.jpg",
+        "img": "require('../src/public/image/img10.jpg')",
         "answer1": {
             "text": "어디로 갈지 미리 검색해본다.",
             "result": "J"
@@ -132,7 +132,7 @@
     {
         "id": 11,
         "question": "내일 꽃 구경을 하러 간다.",
-        "img": "./img/img11.jpg",
+        "img": "require('../src/public/image/img11.jpg')",
         "answer1": {
             "text": "내일 뭐 입고 가지..?",
             "result": "J"
@@ -145,7 +145,7 @@
     {
         "id": 12,
         "question": "꽃구경을 하고 카페를 가기로 했다.",
-        "img": "./img/img12.jpg",
+        "img": "require('../src/public/image/img12.jpg')",
         "answer1": {
             "text": "어디로 갈지 미리 검색해본다.",
             "result": "J"
