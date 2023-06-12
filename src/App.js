@@ -24,7 +24,6 @@ function App() {
     const [count, setCount] = useState(0);
     const [data, setData] = useState([]);
     const [MBTI, setMBTI] = useState('');
-    const [showAlert, setShowAlert] = useState(false); //'showAlert'는 알림창 표시할지 여부 나타내는 불리언 값
     function add_count() {
         if( count === 11){
             setMBTI(checkmbti(MBTI));
