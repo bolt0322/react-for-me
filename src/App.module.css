@@ -47,9 +47,40 @@
     border-radius: 12px;
     text-align: center;
     line-height: 40px;
-    margin: 10px 10px 10px 10px;
+    margin: 10px 0px;
     font-family: var(--font-Suite);
-
+    cursor: pointer;
+}
+.NextBtn {
+    height: 40px;
+    color: #fff;
+    font-family: var(--font-Suite);
+    line-height: 40px;
+    font-size: 13px;
+    border:none;
+    border-radius: 12px;
+    background-color: #ee9090;
+    cursor: pointer;
+}
+input[type=text] {
+    font-size: 15px;
+    font-weight: 600;
+    padding: 5px 0;
+    width:170px;
+    height: 30px;
+    outline: none;
+    border: 0;
+    padding-left: 10px;
+    background-color: transparent;
+}
+.inputBtn{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 5px;
+    width: 260px;
+    background-color: #dad5d5;
+    border-radius: 8px;
+    margin-top: 20px;
 }
 .content {
     border: 7px solid #ee9090;
@@ -65,10 +96,7 @@
     margin: 25px 10px 10px 10px;
     text-align: center;
 }
-.button {
-    display: flex;
-    justify-content : center;
-}
+
 .resultTitle {
     font-family: "Dosis", sans-serif;
     font-size: 35px;
@@ -83,6 +111,7 @@
     border-radius: 30px 30px 30px 30px;
     border-style: dotted;
     display: flex;
+    align-items: center;
     flex-direction: column;
     padding: 10px 10px 10px 10px;
     box-sizing: border-box;
@@ -115,18 +144,4 @@
     --font-Chassam: "Chassam";
     --font-SCDream: "SCDream";
     --font-Suite: "Suite";
-}
-.NextBtn {
-    height: 50px;
-    display: flex;
-    text-align: center;
-    padding: 10px 0;
-    justify-content: center;
-    color: #fff;
-    font-family: "Dosis";
-    align-items: center;
-    font-size: 15px;
-    border:none;
-    border-radius: 5px;
-    background-color: #ee9090;
 }

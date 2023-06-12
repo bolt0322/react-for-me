@@ -1,5 +1,5 @@
-import banana from "./App.module.css";
-import { useState,useEffect, useCallback } from "react";
+import banana from "./App.module.css"; 
+import React, { useState,useEffect, useCallback } from "react";
 import qdata from "../src/question.json";
 import rdata from "../src/resultType.json";
 import { collection, addDoc,getDocs } from "firebase/firestore";
@@ -24,6 +24,7 @@ function App() {
     const [count, setCount] = useState(0);
     const [data, setData] = useState([]);
     const [MBTI, setMBTI] = useState('');
+    const [showAlert, setShowAlert] = useState(false); //'showAlert'는 알림창 표시할지 여부 나타내는 불리언 값
     function add_count() {
         if( count === 11){
             setMBTI(checkmbti(MBTI));
@@ -95,19 +96,30 @@ function App() {
         applydata();
     }
    
-        const fetchData = useCallback ( async() => {
-            let tasksData = [];
-            const docSnap = await getDocs(collection(db,"tasks"));
-            docSnap.forEach((doc) => {
-                tasksData.push({ mbti: doc.data().mbti, name: doc.data().nickname, id: doc.data().id});
-            });
-                    setTasks(tasksData);
-                },[]);
-            useEffect(()=> {
-                fetchData();
-            },[fetchData])
-            console.log(tasks);
+    const fetchData = useCallback ( async() => {
+        let tasksData = [];
+        const docSnap = await getDocs(collection(db,"tasks"));
+        docSnap.forEach((doc) => {
+            tasksData.push({ mbti: doc.data().mbti, name: doc.data().nickname, id: doc.data().id});
+        });
+        setTasks(tasksData);
+    },[]);
+    useEffect(()=> {
+        fetchData();
+    },[fetchData])
+        console.log(tasks);
+    
 
+    // function MyComponent=()=> {      //닉네임 저장할 때 뜨는 알림창 함수
+    //     const handleClick=()=> {   //이 함수는 버튼 클릭 시 'setShowAlert' 호출해서 'showAlert'값을 'true'로 변경
+    //         alert('저장되었습니다!');
+    //         setShowAlert(true);
+    //     };
+    // }
+    
+    
+    
+    
     if(page==="start") {
         return (
             <div className={banana.page}> 
@@ -146,24 +158,20 @@ function App() {
                     <div className={banana.ex01}>{rdata[MBTI].summary}</div>
                     <div className={banana.ex02}>{rdata[MBTI].text1}</div>
                     <div className={banana.ex03}>{rdata[MBTI].text2[0]}</div>
-                    <input 
-                    value={UIDvalue}
+                    <div className={banana.inputBtn}>
+                        <input 
+                            value={UIDvalue}
                                 onChange={UIDvalueChange}
                                 type="text"
                                 placeholder="닉네임을 입력해주세요"/>
-                    <button className={banana.NextBtn} onClick={checkapply}>저장하기</button>
-                    {/* {tasks.map((task) => {
-                        return(
-                        <tr key={task.id}>
-                            <td>{task.name}</td>
-                            <td>{task.mbti}</td>
-                        </tr>
-                    )})
-                    } */}
-                    <div className={banana.button}>
+                        
+                            <button className={banana.NextBtn} onClick={()=>{checkapply(); alert('저장완료!')}}>저장하기</button>
+                        
+                    </div>
+                   
                         <div className={banana.btn} onClick={()=>{setCount(0); setData([]); setPage('data'); fetchData()}}>다음 페이지</div>                
                         <div className={banana.btn} onClick={()=>{setCount(0); setData([]); setPage('start')}}>처음으로 돌아가기</div>
-                    </div>
+                   
                   
                 </div>
                 
