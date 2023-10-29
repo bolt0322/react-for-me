@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/react-for-me/static/css/main.6aaac6b6.css",
+    "main.js": "/react-for-me/static/js/main.1f263d69.js",
+    "static/media/KCC-Chassam.ttf": "/react-for-me/static/media/KCC-Chassam.cee84c56020871dac0e1.ttf",
+    "static/media/HumanBeomsuk.ttf": "/react-for-me/static/media/HumanBeomsuk.84c273a7edab5ac9dac0.ttf",
+    "static/media/img02.jpg": "/react-for-me/static/media/img02.28a8d298baaacd6a5574.jpg",
+    "static/media/SKYBORI.ttf": "/react-for-me/static/media/SKYBORI.f8b26c1ba09c7327b35a.ttf",
+    "static/media/mbti.jpg": "/react-for-me/static/media/mbti.31bd13afa11102008542.jpg",
+    "static/media/SCDream2.otf": "/react-for-me/static/media/SCDream2.f44c037d461a68f92e1e.otf",
+    "static/media/SUITE-Regular.ttf": "/react-for-me/static/media/SUITE-Regular.3d2969701e37ae1248ea.ttf",
+    "static/media/Dosis-Regular.ttf": "/react-for-me/static/media/Dosis-Regular.16c5afafe71efb210033.ttf",
+    "index.html": "/react-for-me/index.html",
+    "main.6aaac6b6.css.map": "/react-for-me/static/css/main.6aaac6b6.css.map",
+    "main.1f263d69.js.map": "/react-for-me/static/js/main.1f263d69.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6aaac6b6.css",
+    "static/js/main.1f263d69.js"
+  ]
+}
