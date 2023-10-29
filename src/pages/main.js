@@ -28,7 +28,7 @@ function Main(){
             <div className={banana.friendsContainer}>
                 {nameList.map((name, index) => (
                     <div className={banana.item} key={index}>
-                        <div className={banana.itemContainer}><Link to={"/friend"} state= { {nickname: name} }  style={{ textDecoration: "none",color: "black "}}>"{name}"의 MBTI</Link></div>
+                        <div className={banana.itemContainer}><Link to={"/friend"} state= { {nickname: name} }  style={{ textDecoration: "none",color: "black "}}>"{name}"의 테스트</Link></div>
                     </div>
               
                 ))}
