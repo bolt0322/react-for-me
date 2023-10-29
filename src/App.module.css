@@ -6,7 +6,6 @@
     font-family: var(--font-Chassam);
 }
 .page {
-    
     width: 500px;
     height: 100%;
     margin: 0 auto;
@@ -62,17 +61,7 @@
     background-color: #ee9090;
    cursor: pointer;
 }
-input[type=text] {
-    font-size: 15px;
-    font-weight: 600;
-    padding: 5px 0;
-    width:170px;
-    height: 30px;
-    outline: none;
-    border: 0;
-    padding-left: 10px;
-    background-color: transparent;
-}
+
 .inputBtn{
     display: flex;
     justify-content: space-between;
@@ -137,11 +126,139 @@ input[type=text] {
 }
 @font-face {
     font-family: "Suite";
+    font-weight: 400;
     src: url('./font/SUITE-Regular.ttf');
+}
+@font-face {
+    font-family: "Beomsuk";
+    font-weight: 400;
+    src: url('./font/HumanBeomsuk.ttf');
+}
+@font-face {
+    font-family: "Skybori";
+    font-weight: 400;
+    src: url('./font/SKYBORI.ttf');
 }
 :root {
     --font-googleDosis: "googleDosis";
     --font-Chassam: "Chassam";
     --font-SCDream: "SCDream";
     --font-Suite: "Suite";
+    --font-Skybori: "Skybori";
+    --font-Beomsuk: "Beomsuk";
+}
+.friends {
+    width: 100%; 
+    padding-top: 40px;
+    padding-bottom: 18px;
+    font-size: 30px;
+    text-align: center;
+    font-family: var(--font-Chassam);
+}
+.friendsContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 100fr);
+    grid-template-rows: repeat(2, 100fr);
+    gap: 14px;
+    height: 30vh;
+    width: 30vw;
+}
+.item {
+    border-radius: 7px;
+    padding: 16px;
+    background-color: #ffe7e7;
+}
+.itemContainer {
+    text-align: center;
+    line-height: 10vh;
+    font-size: 19px;
+    font-weight: 700;
+    font-family: var(--font-SCDream);
+    cursor: pointer;
+
+}
+.itemContent {
+    font-family: var(--font-SCDream);
+    font-size: 15px;
+}
+.myPgBtn {
+    font-family: var(--font-Chassam);
+    font-size: 18px;
+    color: white;
+    background-color: #e9a3a3;
+    border-radius: 5px;
+    margin: 90px 0px 50px 0px;
+    padding: 15px 20px;
+    cursor: pointer;
+}
+.myPgContainer{
+    margin: 0px 0px 0px 0px;
+    border: 2px solid #dcdada;
+    padding: 10px 1px;
+    vertical-align: top;
+    align-items: center;
+    justify-content: center;
+}
+.myPgQues{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 15px 0px 15px;
+    font-family: var(--font-SCDream);
+}
+.myPgAns{
+    display: flex;
+    justify-content: center;
+    margin: 0px 25px 0px 50px;
+    font-family: var(--font-SCDream);
+
+}
+.myPgLine{
+    display: flex;
+    margin: 0px 3px 0px 3px;
+    vertical-align: top;
+    padding: 0px 0px 0px 0px;
+    justify-content: space-between;    /*내용물을 양쪽 끝에 정렬*/
+
+}
+.myPgText {
+    line-height: 3;
+    margin-right: 6px;
+}
+.myPgEnd{
+    font-family: var(--font-SCDream);
+    font-size: 13px;
+    color:white;
+    width: 200px;
+    height: 40px;
+    background-color: #ee9090;
+    border-radius: 12px;
+    text-align: center;
+    line-height: 40px;
+    margin: 10px 0px;
+    cursor: pointer;
+
+}
+.myPgBelow {
+    border: 2px #000000;
+    padding: 250px 10px 5px 10px;
+    text-align: center;
+}
+.testResult {
+    font-family: var(--font-SCDream);
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 100px;
+    text-decoration: underline;
+}
+.testScore {
+    font-family: var(--font-SCDream);
+    font-size: 60px;
+    font-weight: bolder;
+    margin-top: 90px;
+    border: #f17575 ;
+    border-radius: 100%;
+    border-width: 10px;
+    border-style: outset;
+    padding: 17px;
 }
