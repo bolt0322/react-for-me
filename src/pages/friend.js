@@ -1,6 +1,6 @@
 import banana from "../App.module.css"; 
 import styled from "styled-components";
-import { useLocation,Link } from "react-router-dom";
+import { useLocation,Link,useNavigate } from "react-router-dom";
 import { db } from "../firebase";
 import { collection, getDocs, where, query } from "firebase/firestore";
 import { useState,useEffect } from "react";
@@ -26,11 +26,19 @@ const Btn = styled.button`
     margin-top:40px;
     justify-content:center;
 `
+const Selectbox = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    width:160px;
+`
 function Friend(){
     const location = useLocation();
     const nickname = location.state.nickname;
-    const [userData, setUserData] = useState([]);
-
+    const [userData, setUserData] = useState([]);    //질문자의 질문, 답안을 userData배열에 저장
+    const [click, setClick] = useState([null, null, null, null, null]);
+    const [score, setScore] = useState(0);
+    const history = useNavigate();
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -43,12 +51,44 @@ function Friend(){
                 setUserData(userDataArray);
             } catch (error) {
                 console.error("Error fetching data: ", error);
-            }
+            }       
         };
 
         fetchData();
     }, [nickname]); 
-    console.log(userData)
+
+    const answerArray = userData.length > 0 ? [      //userData배열에 있는 첫번째 사용자의 각 answer값을 담고있는 배열
+        userData[0]['answer1'],
+        userData[0]['answer2'],
+        userData[0]['answer3'],
+        userData[0]['answer4'],
+        userData[0]['answer5'],
+    ] : [];
+    console.log(answerArray);
+
+    const calculatedScore = () => {    //점수 계산하는 함수
+        let num = 0;
+   
+        for (let i=0; i<answerArray.length; i++) {
+            if (answerArray[i] === click[i]) {
+                num += 20;
+            }
+        }
+        setScore(num);
+        console.log(score)      //점수를 상태에 업데이트
+        history( "/result",{
+             // Update with the actual path of the result page
+            state: {name:nickname, showscore: num },
+          });
+    };
+
+    const handleCheckbox = (index, value) => {   //체크박스 클릭할 때 상태 업데이트하는 함수
+        const newClick = [...click];
+        newClick[index] = value;
+        setClick(newClick);
+        console.log(newClick)
+      };
+
     return(
         <div className={banana.page}>
                 <div className={banana.friends}>"{nickname}"의 TEST!</div>
@@ -60,83 +100,103 @@ function Friend(){
                             <div>
                                 <div className={banana.myPgText}>질문 : {user.question1}</div>
                             </div>
-                            <Check >
-                                <input
-                                    type="checkbox"
-                                    />
-                                <div className={banana.myPgText}>그렇다</div>
-                                <input
-                                    type="checkbox"
-                                    />
-                                <div className={banana.myPgText}>아니다</div>
-                            </Check>
+                            <Selectbox>
+                            <input
+                                type="checkbox"
+                                onChange={() => handleCheckbox(0, true)}
+                                checked={click[0] === true}
+                            />
+                            <div>그렇다</div>
+                            <input
+                                type="checkbox"
+                                onChange={() => handleCheckbox(0, false)}
+                                checked={click[0] === false} 
+                            />
+                            <div>아니다</div>
+                            </Selectbox>
+
                         </Box>
                         <Box  key={user.id}>
                             <div>
                                 <div className={banana.myPgText}>질문 : {user.question2}</div>
                             </div>
-                            <Check >
+                            <Selectbox>
                                 <input
                                     type="checkbox"
-                                    />
-                                <div className={banana.myPgText}>그렇다</div>
+                                    onChange={() => handleCheckbox(1, true)}
+                                    checked={click[1] === true}
+                                />
+                                <div>그렇다</div>
                                 <input
                                     type="checkbox"
-                                    />
-                                <div className={banana.myPgText}>아니다</div>
-                            </Check>
+                                    onChange={() => handleCheckbox(1, false)}
+                                    checked={click[1] === false}
+                                />
+                                <div>아니다</div>  
+                            </Selectbox>                          
                         </Box>
                         <Box  key={user.id}>
                             <div>
                                 <div className={banana.myPgText}>질문 : {user.question3}</div>
                             </div>
-                            <Check >
+                            <Selectbox>
                                 <input
                                     type="checkbox"
-                                    />
-                                <div className={banana.myPgText}>그렇다</div>
+                                    onChange={() => handleCheckbox(2, true)}
+                                    checked={click[2] === true}
+                                />
+                                <div>그렇다</div>
                                 <input
                                     type="checkbox"
-                                    />
-                                <div className={banana.myPgText}>아니다</div>
-                            </Check>
+                                    onChange={() => handleCheckbox(2, false)}
+                                    checked={click[2] === false}
+                                />
+                                <div>아니다</div>  
+                            </Selectbox>                          
                         </Box>
                         <Box  key={user.id}>
                             <div>
                                 <div className={banana.myPgText}>질문 : {user.question4}</div>
-                            </div>
-                            <Check >
+                            </div>  
+                            <Selectbox>                          
                                 <input
                                     type="checkbox"
-                                    />
-                                <div className={banana.myPgText}>그렇다</div>
+                                    onChange={() => handleCheckbox(3, true)}
+                                    checked={click[3] === true}
+                                />
+                                <div>그렇다</div>
                                 <input
                                     type="checkbox"
-                                    />
-                                <div className={banana.myPgText}>아니다</div>
-                            </Check>
+                                    onChange={() => handleCheckbox(3, false)}
+                                    checked={click[3] === false}
+                                />
+                                <div>아니다</div>     
+                            </Selectbox>                       
                         </Box>
                         <Box  key={user.id}>
                             <div>
                                 <div className={banana.myPgText}>질문 : {user.question5}</div>
-                            </div>
-                            <Check >
+                            </div> 
+                            <Selectbox>                              
                                 <input
                                     type="checkbox"
-                                    />
-                                <div className={banana.myPgText}>그렇다</div>
+                                    onChange={() => handleCheckbox(4, true)}
+                                    checked={click[4] === true}
+                                />
+                                <div>그렇다</div>
                                 <input
                                     type="checkbox"
-                                    />
-                                <div className={banana.myPgText}>아니다</div>
-                            </Check>
+                                    onChange={() => handleCheckbox(4, false)}
+                                    checked={click[4] === false}
+                                />
+                                <div>아니다</div>  
+                            </Selectbox>                         
                         </Box>
                     </Wrapper>
-                        ))}
-                     
-              
+                    ))}
+                                  
 
-                     <Btn ><div className={banana.myPgEnd}><Link to={"/result"} state= { {name: nickname} }  style={{ textDecoration: "none",color: "white"}}>결과 보기!</Link></div></Btn>
+                     <Btn onClick={calculatedScore}><div className={banana.myPgEnd}>결과보기</div></Btn>
             
                 </div>
             </div>

@@ -10,7 +10,6 @@ const Nickname = styled.div`
 const Questionbox = styled.div`
     display:flex;
     justify-content: space-between;
-
     padding: 0 px 30px;
     margin:20px;
 `
@@ -52,33 +51,43 @@ const Btn = styled.button`
     justify-content:center;
 `
 function Create(){
+    const [name, setName] = useState("");
     const [adata, setAdata] = useState("");
     const [bdata, setBdata] = useState("");
     const [cdata, setCdata] = useState("");
     const [ddata, setDdata] = useState("");
     const [edata, setEdata] = useState("");
-    const [name, setName] = useState("");
-    const handleSaveData = async () => {
-      try {
-        // Firestore에 데이터 추가
-        const docRef = await addDoc(collection(db, "users"), {
-          // your_collection_name에 데이터를 추가할 수 있습니다.
-          nickname: name,
-          question1: adata,
-          question2: bdata,
-          question3: cdata,
-          question4: ddata,
-          question5: edata,
-        });
-  
-        console.log("Document written with ID: ", docRef.id);
-      } catch (error) {
-        console.error("Error adding document: ", error);
-      }
-      alert("저장되었습니다!");
 
-    // 확인 버튼을 누르면 메인 페이지로 이동
-    window.location.href = "/";
+    const [answer, setAnswer] = useState([null, null, null, null, null]);
+
+  const handleCheckboxClick = (index, value) => {
+    const newAnswer = [...answer];
+    newAnswer[index] = value;
+    setAnswer(newAnswer);
+  };
+    const handleSaveData = async () => {
+        try {
+            const docRef = await addDoc(collection(db, "users"), {
+                nickname: name,
+                question1: adata,
+                question2: bdata,
+                question3: cdata,
+                question4: ddata,
+                question5: edata,
+                answer1: answer[0],      //테스트 낸 사람의 답안을 answer1에 저장      
+                answer2: answer[1],
+                answer3: answer[2],
+                answer4: answer[3],
+                answer5: answer[4]
+            });
+            console.log("Document written with ID: ", docRef.id);
+
+        } catch (error) {
+            console.error("Error adding document: ", error);
+        }
+        alert("저장되었습니다!");
+
+        window.location.href = "/";
     };
 
     return(
@@ -91,132 +100,139 @@ function Create(){
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        />
+                    />
                 </Nickname>
-                    <Questionbox >
-                       
-                        <Question >
-                            <div >질문 : </div>
-                            <Input
-                                type="text"
-                                placeholder="입력하기"
+                <Questionbox >
+                    <Question >
+                        <div >질문 : </div>
+                        <Input
+                            type="text"
+                            placeholder="입력하기"
                                 
-                                value={adata}
-                                onChange={(e) => setAdata(e.target.value)}
-                              />
-                              
-                        </Question>
-                        <Question>
-                            <Checkbox
-                                type="checkbox"
-                                />
-                            <div >그렇다</div>
-                            <Checkbox
-                                type="checkbox"
-                                />
-                            <div>아니다</div>
-                        </Question>
-                    </Questionbox>
-                    <Questionbox >
-                       
-                        <Question >
-                            <div >질문 : </div>
-                            <Input
-                                type="text"
-                                placeholder="입력하기"
+                            value={adata}
+                            onChange={(e) => setAdata(e.target.value)}
+                        />
+                    </Question>
+                    <Question>
+                        <Checkbox
+                            type="checkbox"
+                            onChange={() => handleCheckboxClick(0, true)}
+                            checked={answer[0] === true}
+                        />
+                        <div >그렇다</div>
+                        <Checkbox
+                            type="checkbox"
+                            onChange={() => handleCheckboxClick(0, false)}
+                            checked={answer[0] === false} 
+                        />
+                        <div>아니다</div>
+                    </Question>
+                </Questionbox>
+                <Questionbox >
+                    <Question >
+                        <div >질문 : </div>
+                        <Input
+                            type="text"
+                            placeholder="입력하기"
                                 
-                                value={bdata}
-                                onChange={(e) => setBdata(e.target.value)}
-                              />
-                              
-                        </Question>
-                        <Question>
-                            <Checkbox
-                                type="checkbox"
-                                />
-                            <div >그렇다</div>
-                            <Checkbox
-                                type="checkbox"
-                                />
-                            <div>아니다</div>
-                        </Question>
-                    </Questionbox>
-                    <Questionbox >
-                       
-                        <Question >
-                            <div >질문 : </div>
-                            <Input
-                                type="text"
-                                placeholder="입력하기"
+                            value={bdata}
+                            onChange={(e) => setBdata(e.target.value)}
+                        />
+                    </Question>
+                    <Question>
+                        <Checkbox
+                            type="checkbox"
+                            onChange={() => handleCheckboxClick(1, true)}
+                            checked={answer[1] === true}
+                        />
+                        <div >그렇다</div>
+                        <Checkbox
+                            type="checkbox"
+                            onChange={() => handleCheckboxClick(1, false)}
+                            checked={answer[1] === false}
+                        />
+                        <div>아니다</div>
+                    </Question>
+                </Questionbox>
+                <Questionbox >
+                    <Question >
+                        <div >질문 : </div>
+                        <Input
+                            type="text"
+                            placeholder="입력하기"
                                 
-                                value={cdata}
-                                onChange={(e) => setCdata(e.target.value)}
-                              />
-                              
-                        </Question>
-                        <Question>
-                            <Checkbox
-                                type="checkbox"
-                                />
-                            <div >그렇다</div>
-                            <Checkbox
-                                type="checkbox"
-                                />
-                            <div>아니다</div>
-                        </Question>
-                    </Questionbox>
-                    <Questionbox >
-                       
-                        <Question >
-                            <div >질문 : </div>
-                            <Input
-                                type="text"
-                                placeholder="입력하기"
+                            value={cdata}
+                            onChange={(e) => setCdata(e.target.value)}
+                        />
+                    </Question>
+                    <Question>
+                        <Checkbox
+                            type="checkbox"
+                            onChange={() => handleCheckboxClick(2, true)}
+                            checked={answer[2] === true}
+                        />
+                        <div >그렇다</div>
+                        <Checkbox
+                            type="checkbox"
+                            onChange={() => handleCheckboxClick(2, false)}
+                            checked={answer[2] === false}
+                        />
+                        <div>아니다</div>
+                    </Question>
+                </Questionbox>
+                <Questionbox >
+                    <Question >
+                        <div >질문 : </div>
+                        <Input
+                            type="text"
+                            placeholder="입력하기"
                                 
-                                value={ddata}
-                                onChange={(e) => setDdata(e.target.value)}
-                              />
-                              
-                        </Question>
-                        <Question>
-                            <Checkbox
-                                type="checkbox"
-                                />
-                            <div >그렇다</div>
-                            <Checkbox
-                                type="checkbox"
-                                />
-                            <div>아니다</div>
-                        </Question>
-                    </Questionbox>
-                    <Questionbox >
-                       
-                        <Question >
-                            <div >질문 : </div>
-                            <Input
-                                type="text"
-                                placeholder="입력하기"
+                            value={ddata}
+                            onChange={(e) => setDdata(e.target.value)}
+                        />
+                    </Question>
+                    <Question>
+                        <Checkbox
+                            type="checkbox"
+                            onChange={() => handleCheckboxClick(3, true)}
+                            checked={answer[3] === true}
+                        />
+                        <div >그렇다</div>
+                        <Checkbox
+                            type="checkbox"
+                            onChange={() => handleCheckboxClick(3, false)}
+                            checked={answer[3] === false}
+                        />
+                        <div>아니다</div>
+                    </Question>
+                </Questionbox>
+                <Questionbox >
+                    <Question >
+                        <div >질문 : </div>
+                        <Input
+                            type="text"
+                            placeholder="입력하기"
                                 
-                                value={edata}
-                                onChange={(e) => setEdata(e.target.value)}
-                              />
-                              
-                        </Question>
-                        <Question>
-                            <Checkbox
-                                type="checkbox"
-                                />
-                            <div >그렇다</div>
-                            <Checkbox
-                                type="checkbox"
-                                />
-                            <div>아니다</div>
-                        </Question>
-                    </Questionbox>
+                            value={edata}
+                            onChange={(e) => setEdata(e.target.value)}
+                        />
+                    </Question>
+                    <Question>
+                        <Checkbox
+                            type="checkbox"
+                            onChange={() => handleCheckboxClick(4, true)}
+                            checked={answer[4] === true}
+                        />
+                        <div >그렇다</div>
+                        <Checkbox
+                            type="checkbox"
+                            onChange={() => handleCheckboxClick(4, false)}
+                            checked={answer[4] === false}
+                        />
+                        <div>아니다</div>
+                    </Question>
+                </Questionbox>
                     <Btn onClick={handleSaveData} ><div className={banana.myPgEnd} >저장 후 메인 페이지로 돌아가기</div></Btn>
-                    
-                    
-               
             </Page>
     )
 }

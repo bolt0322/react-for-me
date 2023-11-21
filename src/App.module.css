@@ -194,8 +194,8 @@
 .myPgContainer{
     margin: 0px 0px 0px 0px;
     border: 2px solid #dcdada;
-    padding: 10px 1px;
-    vertical-align: top;
+    padding: 10px 10px;
+    width:600px;
     align-items: center;
     justify-content: center;
 }
