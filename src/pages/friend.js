@@ -66,7 +66,7 @@ function Friend(){
     ] : [];
     console.log(answerArray);
 
-    const calculatedScore = () => {    //점수 계산하는 함수
+    const calculatedScore = () => {    
         let num = 0;
    
         for (let i=0; i<answerArray.length; i++) {
@@ -75,14 +75,14 @@ function Friend(){
             }
         }
         setScore(num);
-        console.log(score)      //점수를 상태에 업데이트
+        console.log(score)      
         history( "/result",{
-             // Update with the actual path of the result page
+            
             state: {name:nickname, showscore: num },
           });
     };
 
-    const handleCheckbox = (index, value) => {   //체크박스 클릭할 때 상태 업데이트하는 함수
+    const handleCheckbox = (index, value) => {   
         const newClick = [...click];
         newClick[index] = value;
         setClick(newClick);
