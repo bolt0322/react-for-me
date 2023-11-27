@@ -115,9 +115,9 @@ function Mresult() {
                              <div className={banana.resultContent}>
                                  <div className={banana.middle}>나의 유형은..?</div>
                                 <div className={banana.resultTitle}>🌷{MBTI}🌷</div>
-                                 <div className={banana.ex01}>{rdata[MBTI].summary}</div>
-                                 <div className={banana.ex02}>{rdata[MBTI].text1}</div>
-                                 <div className={banana.ex03}>{rdata[MBTI].text2[0]}</div>
+                                 <div className={banana.ex01}>{resultData ? resultData.summary : '유효한 결과가 없습니다.'}</div>
+                                 <div className={banana.ex02}>{resultData ? resultData.text1 : '유효한 결과가 없습니다.'}</div>
+                                 <div className={banana.ex03}>{resultData && resultData.text2 ? resultData.text2[0] : '유효한 결과가 없습니다.'}</div>
                                  <div className={banana.inputBtn}>
                                      <input     //닉네임 적는 칸
                                          value={UIDvalue}
