@@ -107,9 +107,6 @@ const MyBtn = styled.button`
     cursor: pointer;
     border-radius: 5px;
     outline: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 `
 const Share = styled.p`
     &.share{
@@ -148,11 +145,13 @@ const SearchInput = styled.input`
 
 const SearchButton = styled.div`
     width: 25px;
+    height: 30px;
     margin-right:4px;
     margin-top:2px;
     cursor: pointer;
     position: absolute;
     right:0;
+    border-radius: 5px;
 
 `;
 const Btnbox = styled.div`
