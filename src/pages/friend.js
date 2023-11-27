@@ -5,7 +5,32 @@ import { db } from "../firebase";
 import { collection, getDocs, where, query } from "firebase/firestore";
 import { useState,useEffect } from "react";
 
-
+const Page = styled.div`
+    width: 600px;
+    min-height:100vh;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    margin : 0 auto;
+    padding: 20px;
+    background-color:#fef1f1;
+`
+const FriendTest = styled.div`
+    font-family: 'Neo', sans-serif;
+    font-size: 40px;
+    width: 100%; 
+    padding-top: 40px;
+    padding-bottom: 40px;
+    text-align: center;
+`
+const Container = styled.div`
+    margin: 0px 0px 0px 0px;
+    padding: 10px 10px;
+    width:600px;
+    align-items: center;
+    justify-content: center;
+}
+`
 const Box = styled.div`
     display:flex;
     padding: 0 10px;
@@ -14,9 +39,6 @@ const Box = styled.div`
 const Check = styled.div`
     display:flex;
     margin: 0 0px 0 60px;
-`
-const Wrapper = styled.div`
-
 `
 const Btn = styled.button`
     width:100%;
@@ -32,11 +54,33 @@ const Selectbox = styled.div`
     justify-content:space-between;
     width:160px;
 `
+const Wrapper = styled.div`
+
+`
+const Question = styled.div`
+    font-family: 'SCDream', sans-serif;
+    font-weight: bold;
+    margin: 10px 0px;
+`
+const ResultBtn = styled.div`
+    font-family: 'Neo', sans-serif;
+    font-size: 20px;
+    color:white;
+    width: 400px;
+    height: 60px;
+    background-color: #464040;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+`
+
 function Friend(){
     const location = useLocation();
     const nickname = location.state.nickname;
     const [userData, setUserData] = useState([]);    //질문자의 질문, 답안을 userData배열에 저장
-    const [click, setClick] = useState([null, null, null, null, null]);
+    const [click, setClick] = useState([null, null, null, null, null, null, null, null, null, null]);
     const [score, setScore] = useState(0);
     const history = useNavigate();
     useEffect(() => {
@@ -63,6 +107,11 @@ function Friend(){
         userData[0]['answer3'],
         userData[0]['answer4'],
         userData[0]['answer5'],
+        userData[0]['answer6'],
+        userData[0]['answer7'],
+        userData[0]['answer8'],
+        userData[0]['answer9'],
+        userData[0]['answer10']
     ] : [];
     console.log(answerArray);
 
@@ -71,7 +120,7 @@ function Friend(){
    
         for (let i=0; i<answerArray.length; i++) {
             if (answerArray[i] === click[i]) {
-                num += 20;
+                num += 10;
             }
         }
         setScore(num);
@@ -90,16 +139,14 @@ function Friend(){
       };
 
     return(
-        <div className={banana.page}>
-                <div className={banana.friends}>"{nickname}"의 TEST!</div>
-                <div className={banana.myPgContainer}>
+        <Page>
+                <FriendTest>"{nickname}"의 테스트!</FriendTest>
+                <Container>
                     
                     {userData.map((user) => (
                         <Wrapper>
                         <Box  key={user.id}>
-                            <div>
-                                <div className={banana.myPgText}>질문 : {user.question1}</div>
-                            </div>
+                            <Question>질문 1 : {user.question1}</Question>
                             <Selectbox>
                             <input
                                 type="checkbox"
@@ -117,9 +164,7 @@ function Friend(){
 
                         </Box>
                         <Box  key={user.id}>
-                            <div>
-                                <div className={banana.myPgText}>질문 : {user.question2}</div>
-                            </div>
+                            <Question>질문 2 : {user.question2}</Question>
                             <Selectbox>
                                 <input
                                     type="checkbox"
@@ -136,9 +181,7 @@ function Friend(){
                             </Selectbox>                          
                         </Box>
                         <Box  key={user.id}>
-                            <div>
-                                <div className={banana.myPgText}>질문 : {user.question3}</div>
-                            </div>
+                            <Question>질문 3 : {user.question3}</Question>
                             <Selectbox>
                                 <input
                                     type="checkbox"
@@ -155,9 +198,7 @@ function Friend(){
                             </Selectbox>                          
                         </Box>
                         <Box  key={user.id}>
-                            <div>
-                                <div className={banana.myPgText}>질문 : {user.question4}</div>
-                            </div>  
+                            <Question>질문 4 : {user.question4}</Question>  
                             <Selectbox>                          
                                 <input
                                     type="checkbox"
@@ -174,9 +215,7 @@ function Friend(){
                             </Selectbox>                       
                         </Box>
                         <Box  key={user.id}>
-                            <div>
-                                <div className={banana.myPgText}>질문 : {user.question5}</div>
-                            </div> 
+                            <Question>질문 5 : {user.question5}</Question>
                             <Selectbox>                              
                                 <input
                                     type="checkbox"
@@ -192,14 +231,97 @@ function Friend(){
                                 <div>아니다</div>  
                             </Selectbox>                         
                         </Box>
+                        <Box  key={user.id}>
+                            <Question>질문 6 : {user.question6}</Question>
+                            <Selectbox>                              
+                                <input
+                                    type="checkbox"
+                                    onChange={() => handleCheckbox(5, true)}
+                                    checked={click[5] === true}
+                                />
+                                <div>그렇다</div>
+                                <input
+                                    type="checkbox"
+                                    onChange={() => handleCheckbox(5, false)}
+                                    checked={click[5] === false}
+                                />
+                                <div>아니다</div>  
+                            </Selectbox>                         
+                        </Box>
+                        <Box  key={user.id}>
+                            <Question>질문 7 : {user.question7}</Question>
+                            <Selectbox>                              
+                                <input
+                                    type="checkbox"
+                                    onChange={() => handleCheckbox(6, true)}
+                                    checked={click[6] === true}
+                                />
+                                <div>그렇다</div>
+                                <input
+                                    type="checkbox"
+                                    onChange={() => handleCheckbox(6, false)}
+                                    checked={click[6] === false}
+                                />
+                                <div>아니다</div>  
+                            </Selectbox>                         
+                        </Box>
+                        <Box  key={user.id}>
+                            <Question>질문 8 : {user.question8}</Question>
+                            <Selectbox>                              
+                                <input
+                                    type="checkbox"
+                                    onChange={() => handleCheckbox(7, true)}
+                                    checked={click[7] === true}
+                                />
+                                <div>그렇다</div>
+                                <input
+                                    type="checkbox"
+                                    onChange={() => handleCheckbox(7, false)}
+                                    checked={click[7] === false}
+                                />
+                                <div>아니다</div>  
+                            </Selectbox>                         
+                        </Box>
+                        <Box  key={user.id}>
+                            <Question>질문 9 : {user.question9}</Question>
+                            <Selectbox>                              
+                                <input
+                                    type="checkbox"
+                                    onChange={() => handleCheckbox(8, true)}
+                                    checked={click[8] === true}
+                                />
+                                <div>그렇다</div>
+                                <input
+                                    type="checkbox"
+                                    onChange={() => handleCheckbox(8, false)}
+                                    checked={click[8] === false}
+                                />
+                                <div>아니다</div>  
+                            </Selectbox>                         
+                        </Box>
+                        <Box  key={user.id}>
+                            <Question>질문10: {user.question10}</Question>
+                            <Selectbox>                              
+                                <input
+                                    type="checkbox"
+                                    onChange={() => handleCheckbox(9, true)}
+                                    checked={click[9] === true}
+                                />
+                                <div>그렇다</div>
+                                <input
+                                    type="checkbox"
+                                    onChange={() => handleCheckbox(9, false)}
+                                    checked={click[9] === false}
+                                />
+                                <div>아니다</div>  
+                            </Selectbox>                         
+                        </Box>
                     </Wrapper>
                     ))}
                                   
-
-                     <Btn onClick={calculatedScore}><div className={banana.myPgEnd}>결과보기</div></Btn>
-            
-                </div>
-            </div>
+                    <Btn onClick={calculatedScore}><ResultBtn>점수 확인하기!</ResultBtn></Btn>
+                </Container>
+            </Page>
     )
 }
 export default Friend;

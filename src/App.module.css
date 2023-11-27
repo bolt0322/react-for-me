@@ -1,9 +1,20 @@
+body{
+    margin:0;
+}
+.team {
+    font-family: var(--font-Beomsuk);
+    font-size: 15px;
+    color: #464040;
+    margin: 20px 30px 30px 30px;
+}
 .mbti {
     width: 100%;
     padding-bottom: 15px;
-    font-size: 32px;
+    font-size: 40px;
+    font-weight: bold;
     text-align: center;
-    font-family: var(--font-Chassam);
+    color: #464040;
+    font-family: var(--font-SCDream);
 }
 .page {
     width: 500px;
@@ -12,6 +23,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    background-color: #fef1f1;
 
 }
 .title {
@@ -67,14 +79,12 @@
     justify-content: space-between;
     padding: 5px 5px;
     width: 260px;
-    background-color: #dad5d5;
+    background-color: #fadbdb;
     border-radius: 8px;
     margin-top: 20px;
 }
 .content {
-    border: 7px solid #ee9090;
-    border-radius: 30px 30px 30px 30px;
-    border-style: dotted;
+    border: 4px dashed #464040;
     display: flex;
     flex-direction: column;
     padding: 10px 10px 10px 10px;
@@ -108,15 +118,9 @@
 .ques {
     font-family: var(--font-Suite);
 }
-
-@font-face {
-    font-family: "googleDosis";
-    font-weight: 400;
-    src: url('./font/Dosis-Regular.ttf');
-}
 @font-face {
     font-family: "Chassam";
-    font-weight: 400;
+    font-weight: normal;
     src: url('./font/KCC-Chassam.ttf');
 }
 @font-face {
@@ -139,6 +143,35 @@
     font-weight: 400;
     src: url('./font/SKYBORI.ttf');
 }
+@font-face {
+    font-family: "Ramche";
+    src: url('./font/Ramche.ttf');
+}
+@font-face {
+    font-family: "Dnf";
+    font-weight: 400;
+    src: url('./font/DNFBitBitv2.ttf');
+}
+@font-face {
+    font-family: "Gmarket";
+    font-weight: 400;
+    src: url('./font/GmarketSansTTFMedium.ttf');
+}
+@font-face {
+    font-family: "Dos";
+    font-weight: 400;
+    src: url('./font/DOSGothic.ttf');
+}
+@font-face {
+    font-family: "Neo";
+    font-weight: 400;
+    src: url('./font/neodgm.ttf');
+}
+@font-face {
+    font-family: "Gal";
+    font-weight: 400;
+    src: url('./font/Galmuri14.ttf');
+}
 :root {
     --font-googleDosis: "googleDosis";
     --font-Chassam: "Chassam";
@@ -157,29 +190,36 @@
 }
 .friendsContainer {
     display: grid;
-    grid-template-columns: repeat(2, 100fr);
-    grid-template-rows: repeat(2, 100fr);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     gap: 14px;
-    height: 30vh;
-    width: 30vw;
+    height:100%;
+    width:330px;
+    margin-bottom: 30px ;
 }
 .item {
     border-radius: 7px;
     padding: 16px;
-    background-color: #ffe7e7;
+    height:40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #464040;
+
 }
 .itemContainer {
     text-align: center;
-    line-height: 10vh;
-    font-size: 19px;
+
+    font-size: 15px;
     font-weight: 700;
-    font-family: var(--font-SCDream);
+    font-family: 'Gal', sans-serif;
     cursor: pointer;
 
 }
 .itemContent {
     font-family: var(--font-SCDream);
     font-size: 15px;
+    
 }
 .myPgBtn {
     font-family: var(--font-Chassam);
@@ -187,13 +227,13 @@
     color: white;
     background-color: #e9a3a3;
     border-radius: 5px;
-    margin: 90px 0px 50px 0px;
+    margin: 50px 0px 50px 0px;
     padding: 15px 20px;
     cursor: pointer;
 }
 .myPgContainer{
     margin: 0px 0px 0px 0px;
-    border: 2px solid #dcdada;
+ 
     padding: 10px 10px;
     width:600px;
     align-items: center;
@@ -221,44 +261,9 @@
     justify-content: space-between;    /*내용물을 양쪽 끝에 정렬*/
 
 }
-.myPgText {
-    line-height: 3;
-    margin-right: 6px;
-}
-.myPgEnd{
-    font-family: var(--font-SCDream);
-    font-size: 13px;
-    color:white;
-    width: 200px;
-    height: 40px;
-    background-color: #ee9090;
-    border-radius: 12px;
-    text-align: center;
-    line-height: 40px;
-    margin: 10px 0px;
-    cursor: pointer;
 
-}
 .myPgBelow {
     border: 2px #000000;
     padding: 250px 10px 5px 10px;
     text-align: center;
-}
-.testResult {
-    font-family: var(--font-SCDream);
-    font-size: 30px;
-    font-weight: 700;
-    margin-top: 100px;
-    text-decoration: underline;
-}
-.testScore {
-    font-family: var(--font-SCDream);
-    font-size: 60px;
-    font-weight: bolder;
-    margin-top: 90px;
-    border: #f17575 ;
-    border-radius: 100%;
-    border-width: 10px;
-    border-style: outset;
-    padding: 17px;
 }
