@@ -10,9 +10,12 @@ const Page = styled.div`
     justify-content: center;
     margin: 0 auto;
     padding: 20px 0 60px;
+    
+`
+const Wrapper = styled.div`
     align-items:center;
     flex-direction: column;
-    display:flex;
+    display:flex;       
 `
 const Team = styled.div`
     font-family: 'Beomsuk', sans-serif;
@@ -85,14 +88,16 @@ function Mbti() {
 
     return(
         <Page>
-            <Team>MBTI TEAM PROJECT</Team>
-            <Subtitle>피크닉 버전으로 go!</Subtitle>
-                <Content>
-                    <MbtiTest>MBTI TEST</MbtiTest>
-                    <Img src="./images/micon.jpg" alt="대체 텍스트"></Img>
-                    <Sub>나의 MBTI는...?</Sub>
-                    <Link to="/mquestion" style={{ textDecoration: "none", color: "inherit" }}><StartBtn>시작하기</StartBtn></Link>
-                </Content>
+            <Wrapper>
+                <Team>MBTI TEAM PROJECT</Team>
+                <Subtitle>피크닉 버전으로 go!</Subtitle>
+                    <Content>
+                        <MbtiTest>MBTI TEST</MbtiTest>
+                        <Img src="./images/micon.jpg" alt="대체 텍스트"></Img>
+                        <Sub>나의 MBTI는...?</Sub>
+                        <Link to="/mquestion" style={{ textDecoration: "none", color: "inherit" }}><StartBtn>시작하기</StartBtn></Link>
+                    </Content>
+            </Wrapper>
         </Page>
     )
 }

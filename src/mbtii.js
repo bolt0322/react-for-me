@@ -1,5 +1,4 @@
- 
-import banana from "./App.module.css"; 
+ import banana from "./App.module.css"; 
 import React, { useState,useEffect, useCallback } from "react";
 import qdata from "../src/question.json";
 import rdata from "../src/resultType.json";

@@ -86,7 +86,7 @@ const TitleUnderBox = styled.div`
     width: 340px;
     text-align:center;
     padding: 10px 0;
-    margin: 30px;
+    margin: 25px;
     font-weight:400;
     font-family: 'Gmarket', sans-serif;
     border-top: 4px dashed #464040;
@@ -97,10 +97,10 @@ const MyBtn = styled.button`
     font-family: 'Neo', sans-serif;
     font-size: 1.2rem;
     font-weight: lighter;
-    margin: 30px 0;
+    margin: 25px 0 18px;
     display: inline-block;
     width: 340px;
-    height: 60px;
+    height: 50px;
     background-color: #464040;
     color: white;
     border: none;
@@ -124,7 +124,7 @@ const SearchBoxWrapper = styled.div`
     padding: 0.1rem;
     width: 325px;
     height: 100%;
-    margin:30px 0;
+    margin: 18px 0 15px;
     border: 2px solid #464040;
     border-radius:5px;
     position:relative;
@@ -183,11 +183,12 @@ const Friends = styled.div`
 const FriendBox = styled.button`
     text-align: center;
     font-size: 15px;
-    font-weight: 700;
     font-family: 'Neo', sans-serif;
     cursor: pointer;
     background-color: #464040;
     color: #fff;
+    padding: 22px 20px;
+    border-radius: 5px;
 `
 
 
@@ -213,62 +214,59 @@ function Main(){
             }
         }
     }, [status]);
+
     const [inputNickname, setInputNickname] = useState('');
     const [existingNickname, setExistingNickname] = useState(null);
-
-    const checkNickname = async () => {
-      // Firestore 초기화
-    //   const db = getFirestore();
-  
+    const checkNickname = async () => {     //비동기 함수. Firestore의 "users" 컬렉션에서 주어진 닉네임이 존재하는지 확인
       // "users" 컬렉션에서 해당 닉네임이 있는지 확인하는 쿼리 생성
       const q = query(collection(db, 'users'), where('nickname', '==', inputNickname));
   
       try {
-        // 쿼리 실행
-        const querySnapshot = await getDocs(q);
+          // 쿼리 실행
+          const querySnapshot = await getDocs(q);
   
-        // 닉네임이 존재하면 출력
-        if (querySnapshot.size > 0) {
-          setExistingNickname(inputNickname);
-        } else {
-          setExistingNickname(null);
-        }
+          // 닉네임이 존재하면 출력
+          if (querySnapshot.size > 0) {
+              setExistingNickname(inputNickname);
+          } else {
+              setExistingNickname(null);
+          }
       } catch (error) {
         console.error('Error checking nickname:', error);
       }
     };
-  const handleButtonClick = () => {
-    if (inputNickname.trim() !== '') {
-      checkNickname();
-    }
-  };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, "users"));
-        const names = querySnapshot.docs.map((doc) => doc.data().nickname);
-        setNameList(names);
-      } catch (error) {
-        console.error("Error fetching data: ", error);
-      }
+    const handleButtonClick = () => {          //버튼 클릭될 때 호출되는 함수. 입력된 닉네임이 비어 있지 않으면 checkNickname 함수를 호출
+        if (inputNickname.trim() !== '') {
+            checkNickname();
+        }
     };
 
-    fetchData();
-  }, []);
-  const [pageIndex, setPageIndex] = useState(0);
-  const namesPerPage = 4; // 페이지당 표시할 이름 수
-  const totalNames = nameList.length;
+    useEffect(() => {                  //이 훅은 컴포넌트가 마운트될 때 데이터를 가져오기 위해 사용됨.
+        const fetchData = async () => {
+            try {
+                const querySnapshot = await getDocs(collection(db, "users"));
+                const names = querySnapshot.docs.map((doc) => doc.data().nickname);
+                setNameList(names);    //가져온 데이터에서 각 문서의 닉네임을 배열로 추출하여 nameList 상태를 채움.
+            } catch (error) {
+                console.error("Error fetching data: ", error);
+            }
+        };
+        fetchData();
+    }, []);
+    const [pageIndex, setPageIndex] = useState(0);
+    const namesPerPage = 4; // 페이지당 표시할 이름 수
+    const totalNames = nameList.length;
 
-  const handleNextClick = () => {
-    setPageIndex((prevIndex) => prevIndex + 1);
-  };
+    const handleNextClick = () => {
+        setPageIndex((prevIndex) => prevIndex + 1);
+    };
 
-  const handlePrevClick = () => {
-    setPageIndex((prevIndex) => prevIndex - 1);
-  };
+    const handlePrevClick = () => {
+        setPageIndex((prevIndex) => prevIndex - 1);
+    };
 
-  const startIndex = pageIndex * namesPerPage;
+    const startIndex = pageIndex * namesPerPage;
   
     return(
 
@@ -278,7 +276,7 @@ function Main(){
             <TitleBox>
                 <Title>TEST</Title>
                 <Title>ABOUT</Title>
-                <Title>MY</Title>
+                <Title>YOUR</Title>
                 <Title>FRIENDS!!</Title>
             </TitleBox>
             
@@ -305,9 +303,12 @@ function Main(){
                 <SearchInput
                     type="text"
                     name="searchInput"
-                    placeholder="친구를 검색하세요!"
+                    placeholder="친구를 검색해 보세요!"
                     value={inputNickname}
-                    onChange={(e) => setInputNickname(e.target.value)}
+                    onChange={(e) => {
+                      setInputNickname(e.target.value);
+                      setExistingNickname(null);
+                    }}
                 />
                 <SearchButton onClick={handleButtonClick} type="submit" >
                     <img src={search}/>
@@ -323,12 +324,12 @@ function Main(){
                 <div className={banana.friendsContainer}>
                   {nameList.slice(startIndex, startIndex + namesPerPage).map((name, index) => (
                     <div className={banana.item} key={index}>
-                    <div className={banana.itemContainer}>
-                      <Link to={"/friend"} state={{ nickname: name }} style={{ textDecoration: "none", color: "white" }}>
-                        "{name}"의 테스트
-                      </Link>
+                      <div className={banana.itemContainer}>
+                        <Link to={"/friend"} state={{ nickname: name }} style={{ textDecoration: "none", color: "white" }}>
+                          "{name}"의 테스트
+                        </Link>
+                      </div>
                     </div>
-                  </div>
                   ))}
                 </div>
                 <Btnbox>

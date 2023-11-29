@@ -7,8 +7,8 @@ import { BrowserRouter, Routes, Route, Link, useNavigate } from "react-router-do
 import styled from "styled-components";
 
 const Page = styled.div`
-    background-color: #fef1f1;
     width: 33%;
+    background-color: #fef1f1;
     min-height: 95vh;
     justify-content: center;
     margin: 0 auto;
@@ -74,7 +74,7 @@ font-family: var(--font-Suite);
 font-size: 16px;
 line-height: 40px;
 border:none;
-border-radius: 12px;
+border-radius: 10px;
 background-color: #464040;
 cursor: pointer;
 margin-bottom: 10px;
@@ -88,23 +88,29 @@ const BtnContainer = styled.div`
 
 function Mquestion() {
     const navigate = useNavigate();
-
+    const apple ='';
     const [page, setPage] = useState('mquestion');
     const [count, setCount] = useState(0);
     const [data, setData] = useState([]);
-    const [MBTI, setMBTI] = useState('');
+    const [MBTI, setMBTI] = useState([]);
     const [tasks, setTasks] = useState([]);
 
-    function add_count() {
+    function add_count(value) {
         if( count === 11){
-            setMBTI(checkmbti(MBTI));
-            navigate('/mresult');
+            setData(prevData => {
+                const newData = [...prevData, value];
+                const senddata=checkmbti(newData).slice(-4);
+             
+                navigate('/mresult', { state: { MBTI: senddata } });
+                return newData;
+            });
         } else {
+            setData(prevData => [...prevData, value]);
             setCount(count+1);
         }
         
     }
-
+    
     const mbtiarr = ['E','I', 'S', 'N', 'T', 'F', 'P', 'J'];
     function checkmbti(apple){
         for(let i =0; i<8; i += 2){
@@ -119,9 +125,7 @@ function Mquestion() {
         return apple;
     }
 
-    const handleClick = (value) => {
-        setData([...data, value]);
-    }
+ 
 
    
     const fetchData = useCallback ( async() => {    //문서 불러오기 위한 작업
@@ -134,8 +138,7 @@ function Mquestion() {
     },[]);
     useEffect(()=> {       //useEffect함수는 fetchData일 때만 실행
         fetchData();
-    },[fetchData])
-        console.log(tasks);
+    },[fetchData]);
 
 
     return(
@@ -148,8 +151,8 @@ function Mquestion() {
                 </ImgBox>
                 <Question>{qdata[count].question}</Question>
                 <BtnContainer>
-                    <QuestionBtn onClick={()=>{add_count(); handleClick(qdata[count].answer1.result); console.log(data)}}>{qdata[count].answer1.text}</QuestionBtn>
-                    <QuestionBtn onClick={()=>{add_count(); handleClick(qdata[count].answer2.result); console.log(data)}}>{qdata[count].answer2.text}</QuestionBtn>
+                    <QuestionBtn onClick={()=>{add_count(qdata[count].answer1.result) }}>{qdata[count].answer1.text}</QuestionBtn>
+                    <QuestionBtn onClick={()=>{add_count(qdata[count].answer2.result) }}>{qdata[count].answer2.text}</QuestionBtn>
                 </BtnContainer> 
         </Page>
     )

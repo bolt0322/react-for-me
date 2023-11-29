@@ -172,6 +172,17 @@ body{
     font-weight: 400;
     src: url('./font/Galmuri14.ttf');
 }
+@font-face {
+    font-family: "Dov";
+    font-weight: 400;
+    src: url('./font/Dovemayo_gothic.ttf');
+}
+@font-face {
+    font-family: "Dia";
+    font-weight: 400;
+    src: url('./font/EF_Diary.ttf');
+}
+
 :root {
     --font-googleDosis: "googleDosis";
     --font-Chassam: "Chassam";
@@ -195,12 +206,12 @@ body{
     gap: 14px;
     height:100%;
     width:330px;
-    margin-bottom: 30px ;
+    margin-bottom: 10px ;
 }
 .item {
     border-radius: 7px;
     padding: 16px;
-    height:40px;
+    height:30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -209,7 +220,7 @@ body{
 }
 .itemContainer {
     text-align: center;
-
+    padding: 10px 10px;
     font-size: 15px;
     font-weight: 700;
     font-family: 'Gal', sans-serif;
