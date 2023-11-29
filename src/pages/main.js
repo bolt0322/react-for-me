@@ -18,7 +18,7 @@ const FlexContainer = styled.div`  //제목과 버튼을 감싸는 컨테이너
 `
 const GridContainer = styled.div`  //버튼을 배치시키는 컨테이너
     display: grid;
-    grid-template-columns: repeat(4,48px);
+    grid-template-columns: repeat(2,48px);
     grid-column-gap: 8px;
     justify-content: center;
     align-items: center;
@@ -285,12 +285,7 @@ function Main(){
             <FlexContainer>
                 <Share className="share">공유하기</Share>
                 <GridContainer>
-                    <FacebookShareButton url={currentUrl}>
-                        <FacebookIcon size={48} round={true} borderRadius={24}></FacebookIcon>      
-                    </FacebookShareButton>
-                    <TwitterShareButton>
-                        <TwitterIcon size={48} round={true} borderRadius={24}></TwitterIcon>
-                    </TwitterShareButton>
+                    
                     <CopyToClipboard text={currentUrl}>
                         <URLShareButton>URL</URLShareButton>
                     </CopyToClipboard>
