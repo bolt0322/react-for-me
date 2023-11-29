@@ -120,7 +120,7 @@ function Mresult() {
     const [UIDvalue, setUIDvalue] = useState('');
    
     const handleReload = () => {
-        window.location.reload();
+        window.location.href = "/";
     };
     // eei snn ttt pjj
     

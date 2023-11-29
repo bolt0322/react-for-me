@@ -132,7 +132,7 @@ function Create(){
         }
         alert("저장되었습니다!");
 
-        window.location.href = "/";
+        window.location.href = "/main";
     };
 
     return(
