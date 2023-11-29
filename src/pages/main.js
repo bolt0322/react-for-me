@@ -5,7 +5,6 @@ import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
 import { collection, getDocs, where, query  } from "firebase/firestore";
 import styled from "styled-components";
-import { FacebookShareButton, FacebookIcon, TwitterIcon, TwitterShareButton } from "react-share";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useScript } from "./hooks";  //카카오톡 공유 기능
 import kakaoLogo from "../img/kakaoLogo.webp";
