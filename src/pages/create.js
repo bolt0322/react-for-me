@@ -1,6 +1,7 @@
 import banana from "../App.module.css"; 
 import styled from "styled-components";
 import { db } from "../firebase";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 
@@ -131,8 +132,6 @@ function Create(){
             console.error("Error adding document: ", error);
         }
         alert("저장되었습니다!");
-
-        window.location.href = "/";
     };
 
     return(
@@ -407,8 +406,8 @@ function Create(){
                         <div>아니다</div>
                     </Question>
                 </Questionbox>
+                <Link to="/" style={{ textDecoration: "none", color: "inherit" }}><Btn onClick={handleSaveData} ><BtnStyle>저장 후 메인 페이지로 돌아가기</BtnStyle></Btn></Link>
                 
-                <Btn onClick={handleSaveData} ><BtnStyle>저장 후 메인 페이지로 돌아가기</BtnStyle></Btn>
             </Page>
     )
 }
